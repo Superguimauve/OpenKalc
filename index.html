@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f5f2">
+  <title>OpenKalc — les bons calculs, simplement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="OpenKalc accueil"><span class="brand-mark">o<span>k</span></span><span>OpenKalc</span></a>
+      <div class="side-label">ESPACE DE TRAVAIL</div>
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav-item active" data-view="calculator"><span class="nav-icon">⌗</span> Calculatrice <kbd>1</kbd></button>
+        <button class="nav-item" data-view="converter"><span class="nav-icon">⇄</span> Convertisseur <kbd>2</kbd></button>
+        <button class="nav-item" data-view="bmi"><span class="nav-icon">◉</span> Calcul IMC <kbd>3</kbd></button>
+        <button class="nav-item" data-view="time"><span class="nav-icon">◷</span> Fuseaux horaires <kbd>4</kbd></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="tip-card"><span class="tip-spark">✳</span><strong>Un outil, mille idées.</strong><p>OpenKalc rassemble les petits calculs qui facilitent le quotidien.</p></div><button class="settings-launch" id="settingsOpen"><span>⚙</span><span>Paramètres</span><span class="settings-arrow">↗</span></button></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumb"><span>Mon espace</span><i>/</i><strong id="crumb">Calculatrice</strong></div><div class="top-actions"><span class="today" id="today"></span><button class="icon-button" id="settingsOpenTop" aria-label="Paramètres" title="Paramètres">⚙</button><button class="icon-button" id="themeToggle" aria-label="Changer de thème" title="Changer de thème">☼</button></div></header>
+      <section class="page-heading"><div id="headingCopy"><div class="eyebrow"><span class="live-dot"></span> VOTRE BOÎTE À OUTILS</div><h1 id="pageTitle">Les bons calculs,<br><em>simplement.</em></h1><p id="pageDesc">Une calculatrice claire et quelques outils pratiques, toujours à portée de main.</p></div><div class="heading-decoration" aria-hidden="true"><span>＋</span><span>÷</span><span>×</span><span>−</span></div></section>
+
+      <div class="workspace">
+        <section class="tool-panel calculator-view active-view" id="view-calculator">
+          <div class="panel-top"><div><span class="panel-kicker">CALCULATRICE</span><h2>Calcul rapide</h2></div><button class="text-button" id="historyToggle">↺ <span>Historique</span></button></div>
+          <div class="calculator-layout"><div class="calc-main"><div class="display"><div class="display-meta"><span id="calcStatus">PRÊT À CALCULER</span><span class="memory" id="memoryTag"></span></div><div class="expression" id="expression">0</div><div class="answer" id="answer">&nbsp;</div></div><div class="keypad" id="keypad">
+            <button class="key utility" data-action="clear">AC</button><button class="key utility" data-action="delete">⌫</button><button class="key utility" data-value="%">%</button><button class="key operator" data-value="÷">÷</button>
+            <button class="key" data-value="7">7</button><button class="key" data-value="8">8</button><button class="key" data-value="9">9</button><button class="key operator" data-value="×">×</button>
+            <button class="key" data-value="4">4</button><button class="key" data-value="5">5</button><button class="key" data-value="6">6</button><button class="key operator" data-value="−">−</button>
+            <button class="key" data-value="1">1</button><button class="key" data-value="2">2</button><button class="key" data-value="3">3</button><button class="key operator" data-value="+">+</button>
+            <button class="key utility" data-action="sign">±</button><button class="key" data-value="0">0</button><button class="key" data-value="," data-insert=".">,</button><button class="key equals" data-action="equals">=</button>
+          </div><div class="memory-row"><button data-action="mc">MC</button><button data-action="mr">MR</button><button data-action="mplus">M+</button><button data-action="mminus">M−</button><span>Astuce : utilisez votre clavier</span></div></div>
+          <aside class="calc-side"><div class="side-card"><div class="side-card-title"><span>✳</span> À portée de main</div><button class="quick-tool" data-shortcut="bmi"><span class="quick-icon coral">◉</span><span><b>Calculer mon IMC</b><small>Repère santé personnel</small></span><span class="arrow">↗</span></button><button class="quick-tool" data-shortcut="converter"><span class="quick-icon blue">⇄</span><span><b>Convertir une mesure</b><small>Longueur, masse, température</small></span><span class="arrow">↗</span></button><button class="quick-tool" data-shortcut="time"><span class="quick-icon yellow">◷</span><span><b>Quelle heure ailleurs ?</b><small>Comparer des fuseaux</small></span><span class="arrow">↗</span></button></div><div class="quote-card"><span class="quote-mark">“</span><p>Les mathématiques sont la poésie des idées.</p><small>— Albert Einstein</small><div class="quote-orbit">π</div></div></aside></div>
+        </section>
+
+        <section class="tool-panel other-view" id="view-converter"><div class="panel-top"><div><span class="panel-kicker">CONVERSION</span><h2>Changer d’échelle</h2></div><span class="soft-badge">18 familles · plus de 100 unités</span></div><div class="form-card"><label for="convertType">Type de conversion</label><select id="convertType"><option value="length">Longueur</option><option value="weight">Masse</option><option value="temperature">Température</option><option value="volume">Volume</option><option value="time">Durée</option><option value="area">Surface</option><option value="speed">Vitesse</option><option value="pressure">Pression</option><option value="energy">Énergie</option><option value="power">Puissance</option><option value="data">Stockage numérique</option><option value="dataRate">Débit de données</option><option value="frequency">Fréquence</option><option value="angle">Angle</option><option value="fuel">Consommation</option><option value="force">Force</option><option value="torque">Couple</option><option value="density">Masse volumique</option></select><div class="convert-fields"><div><label for="fromValue">Valeur</label><input id="fromValue" type="number" value="1" step="any"></div><div class="unit-wrap"><label for="fromUnit">De</label><select id="fromUnit"></select></div><button class="swap-button" id="swapUnits" aria-label="Inverser les unités">⇄</button><div class="unit-wrap"><label for="toUnit">Vers</label><select id="toUnit"></select></div></div><div class="result-banner"><span>RÉSULTAT</span><strong id="convertResult">—</strong></div></div><p class="helper-note">Les conversions s’actualisent automatiquement. Les unités numériques utilisent les préfixes décimaux (base 10) et binaires (base 2).</p></section>
+
+        <section class="tool-panel other-view" id="view-bmi"><div class="panel-top"><div><span class="panel-kicker">BIEN-ÊTRE</span><h2>Votre indice de masse corporelle</h2></div><span class="soft-badge">Un repère, pas un diagnostic</span></div><div class="bmi-layout"><div class="form-card"><div class="input-pair"><div><label for="height">Taille</label><div class="input-suffix"><input id="height" type="number" value="170" min="50" max="250"><span>cm</span></div></div><div><label for="weight">Poids</label><div class="input-suffix"><input id="weight" type="number" value="68" min="10" max="500"><span>kg</span></div></div></div><div class="result-banner bmi-result"><span>VOTRE IMC</span><strong id="bmiValue">—</strong><small id="bmiLabel"></small></div><div class="bmi-scale"><span>Insuffisance</span><span>Corpulence normale</span><span>Surpoids</span><div class="scale-track"><i id="scaleMarker"></i></div></div><p class="disclaimer">L’IMC est un indicateur général. Il ne tient pas compte de la morphologie, de l’âge ou de la composition corporelle.</p></div><div class="bmi-note"><span class="note-icon">♡</span><h3>Un chiffre parmi d’autres</h3><p>L’IMC aide à situer un rapport poids/taille chez l’adulte. Il ne remplace jamais l’avis d’un professionnel de santé.</p><div class="bmi-equation">poids <small>÷</small> taille² <small>=</small> IMC</div></div></div></section>
+
+        <section class="tool-panel other-view" id="view-time"><div class="panel-top"><div><span class="panel-kicker">HORLOGE MONDIALE</span><h2>Le monde, à l’heure juste</h2></div><button class="text-button" id="addCity">＋ <span>Ajouter une ville</span></button></div><div class="time-toolbar"><div class="now-chip"><span class="live-dot"></span> Heure locale <strong id="localTime">--:--</strong></div><span class="time-date" id="timeDate"></span></div><div class="clocks" id="clocks"></div><p class="helper-note">Les heures utilisent la base de fuseaux horaires de votre navigateur et suivent les changements saisonniers.</p></section>
+      </div>
+      <footer><span>© 2026 OpenKalc</span><span>Fait pour rendre les choses plus simples <b>✳</b></span><a href="#" id="aboutLink">À propos</a></footer>
+    </main>
+  </div>
+  <div class="settings-backdrop" id="settingsBackdrop" hidden>
+    <section class="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="settings-head"><div><span class="panel-kicker">OPENKALC</span><h2 id="settingsTitle">Paramètres</h2></div><button class="settings-close" id="settingsClose" aria-label="Fermer les paramètres">×</button></div>
+      <div class="setting-section"><div><strong>Apparence</strong><small>Choisissez le thème de l’application</small></div><select id="themeSelect" aria-label="Thème"><option value="light">Clair</option><option value="dark">Sombre</option></select></div>
+      <div class="setting-section"><div><strong>Couleur d’accent</strong><small>La couleur principale des boutons et détails</small></div><div class="accent-options" role="group" aria-label="Couleur d’accent"><button data-accent-choice="green" aria-label="Vert" title="Vert"></button><button data-accent-choice="blue" aria-label="Bleu" title="Bleu"></button><button data-accent-choice="violet" aria-label="Violet" title="Violet"></button><button data-accent-choice="coral" aria-label="Corail" title="Corail"></button></div></div>
+      <div class="setting-section"><div><strong>Langue</strong><small>Langue de l’interface</small></div><select id="languageSelect" aria-label="Langue"><option value="fr">Français</option><option value="en">English</option></select></div>
+      <div class="setting-section last-setting"><div><strong>Animations</strong><small>Effets de mouvement et de survol</small></div><label class="switch"><input id="motionToggle" type="checkbox" checked><span class="switch-slider"></span></label></div>
+      <p class="settings-footnote">Vos préférences sont enregistrées sur cet appareil.</p>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
